@@ -1,49 +1,84 @@
-# 🎫 AI Support Ticket Classification Engine
+# 🎫 Smart Support Ticket Classification Engine (NLP)
 
-Welcome to the **Support Ticket Classification** project! This repository contains a production-ready Machine Learning system that automatically categorizes incoming customer support tickets and predicts their severity priority (High/Medium/Low). 
+[![Python](https://img.shields.io/badge/Python-3.8+-blue?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
+[![Machine Learning](https://img.shields.io/badge/Machine%20Learning-Scikit--Learn-orange?style=for-the-badge&logo=scikit-learn&logoColor=white)](https://scikit-learn.org/)
+[![Streamlit](https://img.shields.io/badge/Front--End-Streamlit-red?style=for-the-badge&logo=streamlit&logoColor=white)](https://streamlit.io/)
 
-This tool is designed to eliminate massive manual backlogs for support teams, instantly routing issues to the proper department.
+Welcome to the **Support Ticket Classification Engine**—a robust, production-ready system that leverages Natural Language Processing (NLP) to automatically categorize customer support requests and predict their urgency (Priority). 
 
-## 🧠 How it Works
-
-The system uses **Natural Language Processing (NLP)** and Machine Learning to understand the context of support requests:
-1. **Text Preprocessing**: Raw ticket text is cleaned using `NLTK` to remove stopwords, symbols, and lemmatize words to their root forms.
-2. **Feature Extraction**: We use Scikit-Learn's `TfidfVectorizer` to convert text into a term-frequency-inverse-document-frequency numerical matrix.
-3. **Classification**: Robust `LogisticRegression` models predict the `Category` and the `Priority` of the ticket.
-
-## 🛠 Features
-
-- **Automated Kaggle Dataset Pipeline**: We synthesized an extensively structured IT Support dataset matching deep categorical metadata constraints (e.g., ticket resolution, customer age, SLA times).
-- **Live Prediction Dashboard**: A completely responsive Streamlit web application (`ticket_dashboard.py`).
-- **Batch CSV Processing**: Users can upload their own CSV spreadsheet of unlabelled tickets directly into the dashboard. The dashboard will bulk-predict the Category/Priority and allow the user to immediately download the results.
-- **Dynamic Real-Time Analytics**: Built completely without static images! The front-end leverages native Streamlit charting mechanisms (`st.bar_chart`) linked cleanly with `historical_metrics.csv` array dumps.
+This project aims to bridge the gap between high-volume customer signals and efficient response teams by eliminating manual backlog triage.
 
 ---
 
-## 🚀 Getting Started
+## 🚀 Key Features
 
-### 1. Prerequisites
-You must have Python installed. It is recommended to use a virtual environment.
+- **🧠 Advanced NLP Pipeline**: Uses TF-IDF vectorization and Logistic Regression to understand ticket context.
+- **🚨 Priority Heuristics**: Automatically flags critical operational failures (High Priority) from informational requests (Low Priority).
+- **📉 Live Analytics Dashboard**: A premium Streamlit interface to visualize model confidence and performance distributions.
+- **📁 Bulk CSV Processing**: Upload entire corporate datasets to generate instant ML predictions for your ticket backlogs.
+- **📈 Exportable Results**: Download labeled datasets directly from the dashboard for downstream routing.
 
-### 2. Installations
-Install the required libraries to run the NLP parsing and dashboard using the included requirements file:
+---
+
+## 🛠 Project Structure
+
+```text
+├── ticket_classification.py  # ⚙️ MAIN: Train and Export ML Models
+├── ticket_dashboard.py       # 🎨 FRONT-END: Streamlit Analytics Dashboard
+├── customer_support_tickets.csv # 📊 DATA: Primary training dataset
+├── category_model.pkl        # 💾 MODEL: Saved Category Classifier
+├── priority_model.pkl        # 💾 MODEL: Saved Priority Classifier
+├── historical_metrics.csv    # 📈 METRICS: Training performance benchmarks
+└── requirements.txt          # 📦 DEPENDENCIES: Required Python libraries
+```
+
+---
+
+## 🏗 Setup & Execution
+
+### 1. Install Dependencies
 ```bash
 pip install -r requirements.txt
 ```
 
-### 3. Model Training (First Run - ⚠️ REQUIRED)
-Because Git does not securely track heavy 20MB+ `.pkl` model binaries, **you must train and export your own models locally before launching the app!** 
-
-To do this, simply execute the main classification pipeline. It will clean the dummy text, construct the ML pipelines, save the accuracy distributions to `historical_metrics.csv`, and finally export the model artifacts.
+### 2. Train the Models (Initial Run)
+To generate the latest model artifacts and predictive metrics, run the main classification pipeline:
 ```bash
 python ticket_classification.py
 ```
 
-### 4. Running the Dashboard
-Once `category_model.pkl` and `priority_model.pkl` appear in your root folder, launch the dynamic Streamlit GUI:
+### 3. Launch the AI Dashboard
+Open the interactive prediction and analytics engine:
 ```bash
 python -m streamlit run ticket_dashboard.py
 ```
 
-- Navigate to the **⚡ Single Ticket Prediction** tab to paste an individual text body and see visual routing outputs alongside LIVE algorithm metric certainty spans.
-- Navigate to the **📁 Bulk Upload & Analyze** tab to upload your corporate ticket `.csv` files and download instantaneous ML predictions alongside dynamic data distributions!
+---
+
+## 📤 Step-by-Step GitHub Push Guide
+
+Since your repository `FUTURE_ML_02` was created with a README on GitHub, follow these exact steps to push your project locally and **overwrite** the remote with your fresh code:
+
+1. **Stage all changes**:
+   ```bash
+   git add .
+   ```
+2. **Commit your work**:
+   ```bash
+   git commit -m "Added ML Task 2 Support Ticket Classification Project"
+   ```
+3. **Set the correct remote** (already configured):
+   ```bash
+   git remote set-url origin https://github.com/neelima2181/FUTURE_ML_02.git
+   ```
+4. **FORCE PUSH to reconcile history**:
+   ```bash
+   git push -u origin main --force
+   ```
+
+---
+
+## 📝 Performance Insights
+The model currently achieves significant accuracy on the **Zenodo IT Support Dataset**, prioritizing critical server-down events and routing general billing queries to specialized financial support teams.
+
+Developed with ❤️ as part of the Future ML Task 2.
